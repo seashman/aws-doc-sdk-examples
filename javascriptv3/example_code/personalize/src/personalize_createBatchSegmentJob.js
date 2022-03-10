@@ -10,6 +10,7 @@ to create user segments, and exports the user segments to an Amazon S3 bucket.
 See https://docs.aws.amazon.com/personalize/latest/dg/API_CreateBatchSegmentJob.html.
 
 Inputs (replace in code):
+- NAME
 - INPUT_PATH
 - INPUT_KMS_KEY_ARN
 - OUTPUT_PATH
@@ -33,21 +34,21 @@ import { personalizeClient } from "./libs/personalizeClients.js";
 // set the batchSegmentJob parameters
 
 export const createBatchSegmentJobParam = {
-  jobName: 'js-batch-segment',
+  jobName: 'NAME',
   jobInput: {         /* required */
     s3DataSource: {   /* required */
-      path: 's3://test-batch-bucket-policy/input/input.json', /* required */
-      // kmsKeyArn: 'STRING_VALUE /* optional */'
+      path: 'INPUT_PATH', /* required */
+      // kmsKeyArn: 'INPUT_KMS_KEY_ARN' /* optional */'
     }
   },
   jobOutput: {         /* required */
     s3DataDestination: {   /* required */
-      path: 's3://test-batch-bucket-policy/output/', /* required */
-      // kmsKeyArn: 'STRING_VALUE /* optional */'
+      path: 'OUTPUT_PATH', /* required */
+      // kmsKeyArn: 'OUTPUT_KMS_KEY_ARN' /* optional */'
     }
   },
-  roleArn: 'arn:aws:iam::014025156336:role/PersonalizeRole', /* required */
-  solutionVersionArn: 'arn:aws:personalize:us-west-2:014025156336:solution/item-to-user/17f58c76', /* required */
+  roleArn: 'ROLE_ARN', /* required */
+  solutionVersionArn: 'SOLUTION_VERSION_ARN', /* required */
   numResults: 20 /* optional */
 };
 
